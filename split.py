@@ -1,12 +1,12 @@
 import discord
 import json
 from discord.ext import commands
-import Paginator
+
 
 
 def tabsplit(client):
     @client.hybrid_command()
-    async def create(ctx: commands.Context, id, money, *members):
+    async def create(ctx: commands.Context, id, money, members):
         
        # This part calculates the split from the money based on the members.
         split = int(money) // len(members)

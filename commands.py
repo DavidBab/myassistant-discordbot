@@ -9,6 +9,7 @@ import json
 
 
 def interactive_commands(client):
+    
     @client.hybrid_command()
     @commands.cooldown(1, 30, BucketType.user)
     async def fish(ctx: commands.Context):

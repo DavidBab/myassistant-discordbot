@@ -1,4 +1,5 @@
 import discord
+import os
 from discord.ext import commands
 from credits import credit_system
 from inventory import inventory_management
@@ -7,7 +8,7 @@ from split import tabsplit
 import json
 
 
-TOKEN = "Add your token here"
+TOKEN = os.getenv('TOKEN') # You should input your TOKEN here.
 
 
 # This is the prefix that the bot will respond to. It can be anything you want.
@@ -22,6 +23,7 @@ client.remove_command('help')
 @client.event
 async def on_ready():
     print('Logged in as {0.user}'.format(client))
+    await client.tree.sync()
 
 
 @client.event
