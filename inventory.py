@@ -6,8 +6,8 @@ import Paginator
 
 
 def inventory_management(client):
-    @client.command()
-    async def inventory(ctx, member: discord.Member = None):
+    @client.hybrid_command()
+    async def inventory(ctx: commands.Context, member: discord.Member = None):
         '''
         This command displays an inventory of yours or an inventory of the chosen person. Every item
         in your inventory is a list. The first item in the list is an emoji, the second is the name

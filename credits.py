@@ -7,8 +7,8 @@ import Paginator
 
 def credit_system(client):
     # Give Money to a desired member.
-    @client.command()
-    async def donate(ctx, amount, name: discord.Member):
+    @client.hybrid_command()
+    async def donate(ctx: commands.Context, amount, name: discord.Member):
         # We open the "data.json" for reading.
         with open('data.json', 'r') as f:
             database = json.load(f)
@@ -45,9 +45,9 @@ def credit_system(client):
 
 
     # Reseting someones balance
-    @client.command()
+    @client.hybrid_command()
     @commands.is_owner()  # Add this line to restrict usage to server owner
-    async def reset(ctx, member: discord.Member):
+    async def reset(ctx: commands.Context, member: discord.Member):
 
         # We open the "data.json" for reading.
         with open('data.json', 'r') as f:
@@ -79,8 +79,8 @@ def credit_system(client):
 
 
     # Balance checking command 
-    @client.command()
-    async def balance(ctx, member: discord.Member = None):
+    @client.hybrid_command()
+    async def balance(ctx: commands.Context, member: discord.Member = None):
         
         # We open the "data.json" for reading.
         with open('data.json', 'r') as f:

@@ -5,8 +5,8 @@ import Paginator
 
 
 def tabsplit(client):
-    @client.command()
-    async def create(ctx, id, money, *members):
+    @client.hybrid_command()
+    async def create(ctx: commands.Context, id, money, *members):
         
        # This part calculates the split from the money based on the members.
         split = int(money) // len(members)
@@ -35,8 +35,8 @@ def tabsplit(client):
 
 
 
-    @client.command()
-    async def accept(ctx, id = None):
+    @client.hybrid_command()
+    async def accept(ctx: commands.Context, id = None):
         # First, open the data.json file for reading and load it as the config variable.
         if id == None:
             await ctx.send("Provide an ID please.")
@@ -61,8 +61,8 @@ def tabsplit(client):
 
 
 
-    @client.command()
-    async def remove(ctx, id):
+    @client.hybrid_command()
+    async def remove(ctx: commands.Context, id):
         # This part opens the data.json file for reading and loads the content into the config variable.
         with open('split.json', 'r') as f:
             data = json.load(f)
@@ -89,8 +89,8 @@ def tabsplit(client):
 
 
 
-    @client.command()
-    async def tabs(ctx):
+    @client.hybrid_command()
+    async def tabs(ctx: commands.Context):
         # This opens the data.json file for reading and loads it as data variable.
         with open('split.json', 'r') as f:
             data = json.load(f)
@@ -109,8 +109,8 @@ def tabsplit(client):
 
 
 
-    @client.command()
-    async def show(ctx, id):
+    @client.hybrid_command()
+    async def show(ctx: commands.Context, id):
         # First it opens the data.json file for reading and loads it as config variable.
         with open('split.json', 'r') as f:
             data = json.load(f)

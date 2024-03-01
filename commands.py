@@ -9,9 +9,9 @@ import json
 
 
 def interactive_commands(client):
-    @client.command()
+    @client.hybrid_command()
     @commands.cooldown(1, 30, BucketType.user)
-    async def fish(ctx):
+    async def fish(ctx: commands.Context):
         # List of all possibilities to append your inventory with.
         possible_catch = [[":fish:", "Fish", random.randint(1,3)],[":duck:", "Duck", 1], [":shark:", "Shark", 1], [":crab:", "Crab", random.randint(1,2)], [":jellyfish:", "Jellyfish", random.randint(1,2)], [":tropical_fish:", "Tropical Fish", random.randint(1,2)],[":dolphin:", "Dolphin", 1],[":anchor:", "Anchor", 1]]
 
@@ -71,8 +71,8 @@ def interactive_commands(client):
 
 
 
-    @client.command()
-    async def shop(ctx):
+    @client.hybrid_command()
+    async def shop(ctx: commands.Context):
 
         with open("shop.json", "r") as f:
             store = json.load(f)
@@ -109,8 +109,8 @@ def interactive_commands(client):
 
 
 
-    @client.command()
-    async def buy(ctx, item):
+    @client.hybrid_command()
+    async def buy(ctx: commands.Context, item):
         item = item.lower()
 
         # We open both json files to read from them.
@@ -159,8 +159,8 @@ def interactive_commands(client):
 
 
 
-    @client.command()
-    async def sell(ctx, item, amount = None):
+    @client.hybrid_command()
+    async def sell(ctx: commands.Context, item, amount = None):
         # Put the item into lowercase so that whatever input it gets it can find a match.
         item = item.lower()
         # Prices of the fishes.
@@ -236,8 +236,8 @@ def interactive_commands(client):
 
         
         
-    @client.command()
-    async def howgay(ctx, member: discord.Member = None):
+    @client.hybrid_command()
+    async def howgay(ctx: commands.Context, member: discord.Member = None):
         # Generates a randum number between 0-120
         number = random.randint(0,120)
         
@@ -257,14 +257,14 @@ def interactive_commands(client):
 
 
     
-    @client.command()
-    async def rob(ctx, member: discord.Member = None):
+    @client.hybrid_command()
+    async def rob(ctx: commands.Context, member: discord.Member = None):
         pass
 
 
 
-    @client.command()
-    async def slots(ctx):
+    @client.hybrid_command()
+    async def slots(ctx: commands.Context):
         # Open the data.json file to read out data.
         with open("data.json", "r") as f:
             data = json.load(f)
@@ -322,9 +322,9 @@ def interactive_commands(client):
        
 
 
-    @client.command()
+    @client.hybrid_command()
     @commands.cooldown(1, 30, BucketType.user)
-    async def mine(ctx):
+    async def mine(ctx: commands.Context):
         options = [[":rock:", "Rock", random.randint(1,2)], [":gem:", "Diamond", 1]]
         
         # Choose the first item most of the time
@@ -381,8 +381,8 @@ def interactive_commands(client):
             raise error
         
     
-    @client.command()
-    async def help(ctx):
+    @client.hybrid_command()
+    async def help(ctx: commands.Context):
         embeds = []
 
         embed = discord.Embed(title="Help Menu", description="The prefix of the commands is !", color=discord.Color.random())
